@@ -1,0 +1,25 @@
+{
+  "files": {
+    "main.css": "/static/css/main.473459e6.chunk.css",
+    "main.js": "/static/js/main.7caac984.chunk.js",
+    "main.js.map": "/static/js/main.7caac984.chunk.js.map",
+    "runtime-main.js": "/static/js/runtime-main.2fd7dc15.js",
+    "runtime-main.js.map": "/static/js/runtime-main.2fd7dc15.js.map",
+    "static/js/2.76b8ea3c.chunk.js": "/static/js/2.76b8ea3c.chunk.js",
+    "static/js/2.76b8ea3c.chunk.js.map": "/static/js/2.76b8ea3c.chunk.js.map",
+    "index.html": "/index.html",
+    "static/css/main.473459e6.chunk.css.map": "/static/css/main.473459e6.chunk.css.map",
+    "static/js/2.76b8ea3c.chunk.js.LICENSE.txt": "/static/js/2.76b8ea3c.chunk.js.LICENSE.txt",
+    "static/media/Jerry_Huang_Resume.f3459086.doc": "/static/media/Jerry_Huang_Resume.f3459086.doc",
+    "static/media/PEY Final Evaluation.cac18b6d.pdf": "/static/media/PEY Final Evaluation.cac18b6d.pdf",
+    "static/media/UofTLogo.9ec5714f.jpg": "/static/media/UofTLogo.9ec5714f.jpg",
+    "static/media/YorkRegionLogo.afd2c581.png": "/static/media/YorkRegionLogo.afd2c581.png",
+    "static/media/nferenceLogo.cba51a04.svg": "/static/media/nferenceLogo.cba51a04.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.2fd7dc15.js",
+    "static/js/2.76b8ea3c.chunk.js",
+    "static/css/main.473459e6.chunk.css",
+    "static/js/main.7caac984.chunk.js"
+  ]
+}

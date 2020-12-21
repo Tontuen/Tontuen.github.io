@@ -4,15 +4,10 @@ import { PieChart, Pie, Cell } from 'recharts';
 import MultiSelect from "react-multi-select-component";
 
 
-const youtube_history = require('../../files/youtube_history.json');
-const categories = require('../../files/Categories.json');
-const topChannels = require('../../files/Top Channels by Video Count.json');
+const youtube_history = require('../../files/formatted-history.json');
+const categories = require('../../files/categories.json');
+const channels = require('../../files/top50Channels.json');
 
-
-var channels = [];
-for (var channel of Object.keys(topChannels[0])) {
-    channels.push({'label': channel, 'value': channel});
-}
 
 const years = [{"label": 2018, "index": 0}, {"label": 2019, "index": 1}, {"label": 2020, "index": 2}];
 const monthsDict = {"January": 0, "February": 1, "March": 2, "April": 3, "May": 4, "June": 5, "July": 6, "August": 7, "September": 8, "October": 9, "November": 10, "December": 11};
@@ -29,34 +24,38 @@ function YouTubeProject() {
     var selectedData = [{}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}];
     var detailedData = {};
     var index = 0;
-    years.forEach(function (year) {
+    // For each selected year and channel, loops through the list and gets their corresponding data
+    selectedYears.forEach(function (year) {
         selectedChannels.forEach(function (channel) {
+            // Check if there's data for the selected year and channel
             const cats_by_month = youtube_history[year['index']][channel['value']];
             if (cats_by_month) {
+                // For each channel, adds its data to a counter dictionary (detailedData)
                 cats_by_month.forEach(function (item) {
                     const index = monthsDict[item['month']]
                     var detailedData = selectedData[index];
-                    for (var key in item) {
-                        if (key !== 'month') {
-                            if (detailedData[key]) {
-                                detailedData[key] += item[key]
+                    for (var category in item) {
+                        if (category !== 'month') {
+                            if (detailedData[category]) {
+                                detailedData[category] += item[category]
                             } else {
-                                detailedData[key] = item[key]
+                                detailedData[category] = item[category]
                             }
+                        } else {
+                            detailedData['month'] = monthsList[index]
                         }
                     }
                 })
             }
+            // Assigns detailedData to its correct place so that the values can be reused later
             selectedData[index] = detailedData
         })
     })
-    for (var i = 0; i < selectedData.length; i++) {
-        selectedData[i]['month'] = monthsList[i]
-    }
 
 
     var pieCats = []
     var totalVids = 0
+    // Gets the total number of videos watched in each category
     selectedCategories.forEach(function (category) {
         var catData = 0;
         selectedData.forEach(function (group) {
@@ -68,10 +67,6 @@ function YouTubeProject() {
         pieCats.push({'name': category['value'], 'value': catData});
     });
 
-    // function handleClick(e) {
-    //     console.log(e);
-    //     console.log('The link was clicked.');
-    // }
 
     return (
         <div>

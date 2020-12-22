@@ -3,7 +3,7 @@ import nferenceLogo from '../../pics/nferenceLogo.svg'
 import YorkRegionLogo from '../../pics/YorkRegionLogo.png'
 import TutorDoctorLogo from '../../pics/TutorDoctorLogo.png'
 import PEYFinalEvaluation from '../../files/PEY Final Evaluation.pdf'
-import resume from '../../files/Jerry_Huang_Resume.doc'
+import resume from '../../files/Jerry_Huang_Resume.pdf'
 
 function Experience(props) {
     return (
@@ -11,7 +11,7 @@ function Experience(props) {
             <div class="section-title">Experience</div>
 
             <div class="section-content">
-                <a href={resume} download>View Full Resume</a>
+                <a href={resume} download="Jerry_Huang_Resume">View Full Resume</a>
 
                 <div class="work mobile-padding">
                     <div class="main">

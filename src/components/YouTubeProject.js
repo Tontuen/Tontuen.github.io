@@ -15,6 +15,8 @@ const monthsList = [ "January", "February", "March", "April", "May", "June", "Ju
 const colors = ['#0C2A58', '#041408', '#58125D', '#46E718', '#BA79C2', '#EB10A5', '#A1EE79', '#C13CCD', '#8CA373', '#4E29E1', '#26DABB', '#0EACD3', '#0F6066', '#5569BE'];
 
 
+// I would normally keep data in the backend and send the states to a backend API and format the data there, but GitHub doesn't host backened servers so I'm just doing it here
+// I know you're not supposed to process data on the frontend but I don't know of other methods and it doesn't impact performance
 function YouTubeProject() {
     const [selectedCategories, setSelectedCategories] = useState(categories);
     const [selectedChannels, setSelectedChannels] = useState(channels);

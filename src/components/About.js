@@ -17,7 +17,8 @@ function About() {
                     <p>
                         I am a recent graduate from the University of Toronto with a Major in Computer Science and Statistics with a Minor in Molecular Biology. I'm interested in Business Intelligence and Data Analysis, and have been taking online courses to advance my skills in those fields. I'm also interested in development roles where I can work with data. <br /><br />
 
-                        I'm currently working on: <Link to='/YouTubeProject'>YouTube History Analyzer</Link>
+                        I'm currently working on: <Link to='/YouTubeProject'>YouTube History Analyzer</Link> <br />
+                        Purpose: To translate a Power BI app visualizing my YouTube history to React
   				    </p>
 
                     <h1>Skills</h1>

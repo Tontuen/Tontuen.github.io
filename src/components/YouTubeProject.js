@@ -9,7 +9,7 @@ const categories = require('../../files/categories.json');
 const channels = require('../../files/top50Channels.json');
 
 
-const years = [{"label": 2018, "index": 0}, {"label": 2019, "index": 1}, {"label": 2020, "index": 2}];
+const years = [{"label": 2018, "value": 0}, {"label": 2019, "value": 1}, {"label": 2020, "value": 2}];
 const monthsDict = {"January": 0, "February": 1, "March": 2, "April": 3, "May": 4, "June": 5, "July": 6, "August": 7, "September": 8, "October": 9, "November": 10, "December": 11};
 const monthsList = [ "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December" ]
 const colors = ['#0C2A58', '#041408', '#58125D', '#46E718', '#BA79C2', '#EB10A5', '#A1EE79', '#C13CCD', '#8CA373', '#4E29E1', '#26DABB', '#0EACD3', '#0F6066', '#5569BE'];
@@ -30,7 +30,7 @@ function YouTubeProject() {
     selectedYears.forEach(function (year) {
         selectedChannels.forEach(function (channel) {
             // Check if there's data for the selected year and channel
-            const cats_by_month = youtube_history[year['index']][channel['value']];
+            const cats_by_month = youtube_history[year['value']][channel['value']];
             if (cats_by_month) {
                 // For each channel, adds its data to a counter dictionary (detailedData)
                 cats_by_month.forEach(function (item) {
@@ -55,18 +55,20 @@ function YouTubeProject() {
     })
 
 
-    var pieCats = []
+    var validCategories = []
     var totalVids = 0
     // Gets the total number of videos watched in each category
     selectedCategories.forEach(function (category) {
-        var catData = 0;
+        var categoryData = 0;
         selectedData.forEach(function (group) {
             if (group[category['value']]) {
-                catData += group[category['value']];
+                categoryData += group[category['value']];
                 totalVids += group[category['value']];
             };
         });
-        pieCats.push({'name': category['value'], 'value': catData});
+        if (categoryData !== 0) {
+            validCategories.push({'name': category['value'], 'value': categoryData});
+        }
     });
 
 
@@ -74,7 +76,7 @@ function YouTubeProject() {
         <div>
             <div class="sideByside">
                 <MultiSelect options={categories} value={selectedCategories} onChange={setSelectedCategories} />
-                <MultiSelect style={{position: "absolute"}} options={channels} value={selectedChannels} onChange={setSelectedChannels} />
+                <MultiSelect options={channels} value={selectedChannels} onChange={setSelectedChannels} />
                 <MultiSelect options={years} value={selectedYears} onChange={setSelectedYears} disableSearch={true} />
             </div>
 
@@ -86,7 +88,7 @@ function YouTubeProject() {
                         <XAxis dataKey="month" />
                         <YAxis />
                         <Tooltip />
-                        {selectedCategories.map((entry, index) => <Line type="linear" dataKey={entry.value} stroke={colors[index]} />)}
+                        {validCategories.map((entry, index) => <Line type="linear" dataKey={entry.name} stroke={colors[index]} />)}
                     </LineChart>
                 </div>
 
@@ -97,8 +99,8 @@ function YouTubeProject() {
                             const percent = (value/totalVids*100).toFixed(2)
                             return `${value} (${percent}%)`}}
                         />
-                        <Pie data={pieCats} isAnimationActive={false} label>
-                            {selectedCategories.map((entry, index) => <Cell fill={colors[index]} />)}
+                        <Pie data={validCategories} isAnimationActive={false} label>
+                            {validCategories.map((entry, index) => <Cell fill={colors[index]} />)}
                         </Pie>
                     </PieChart>
                 </div>

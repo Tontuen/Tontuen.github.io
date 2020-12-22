@@ -72,7 +72,7 @@ function YouTubeProject() {
         <div>
             <div class="sideByside">
                 <MultiSelect options={categories} value={selectedCategories} onChange={setSelectedCategories} />
-                <MultiSelect options={channels} value={selectedChannels} onChange={setSelectedChannels} />
+                <MultiSelect style={{position: "absolute"}} options={channels} value={selectedChannels} onChange={setSelectedChannels} />
                 <MultiSelect options={years} value={selectedYears} onChange={setSelectedYears} disableSearch={true} />
             </div>
 
@@ -98,10 +98,10 @@ function YouTubeProject() {
                         <Pie data={pieCats} isAnimationActive={false} label>
                             {selectedCategories.map((entry, index) => <Cell fill={colors[index]} />)}
                         </Pie>
-
                     </PieChart>
                 </div>
             </div>
+
         </div>
     );
 }

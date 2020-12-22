@@ -63,3 +63,8 @@ code {
 .linechart {
     float: left
 }
+
+.dropdown-heading-value {
+    width: 100%;
+    max-width: 500px;
+}

@@ -71,37 +71,38 @@ function YouTubeProject() {
     return (
         <div>
             <div class="sideByside">
-                <MultiSelect options={categories} value={selectedCategories} onChange={setSelectedCategories} disableSearch={true} />
+                <MultiSelect options={categories} value={selectedCategories} onChange={setSelectedCategories} />
                 <MultiSelect options={channels} value={selectedChannels} onChange={setSelectedChannels} />
                 <MultiSelect options={years} value={selectedYears} onChange={setSelectedYears} disableSearch={true} />
             </div>
-            <div>
-            	<LineChart width={1500} height={800} data={selectedData}>
-                    <CartesianGrid strokeDasharray="3 3"/>
-                    <Legend layout='vertical' verticalAlign='middle' align='right' wrapperStyle={{paddingLeft: "10px"}}/>
-                    <XAxis dataKey="month" />
-                    <YAxis />
-                    <Tooltip />
-                    {selectedCategories.map((entry, index) => <Line type="linear" dataKey={entry.value} stroke={colors[index]} />)}
-                </LineChart>
-            </div>
 
             <div>
-                <PieChart width={800} height={800}>
-                    <Legend layout='vertical' verticalAlign='middle' align='right' wrapperStyle={{paddingLeft: "10px"}}/>
-                    <Tooltip formatter={(value) => {
-                        const percent = (value/totalVids*100).toFixed(2)
-                        return `${value} (${percent}%)`}}
-                    />
-                    <Pie data={pieCats} isAnimationActive={false} label>
-                        {selectedCategories.map((entry, index) => <Cell fill={colors[index]} />)}
-                    </Pie>
+                <div class="linechart">
+                	<LineChart width={1200} height={600} data={selectedData}>
+                        <CartesianGrid strokeDasharray="3 3"/>
+                        <Legend layout='vertical' verticalAlign='middle' align='right' wrapperStyle={{paddingLeft: "10px"}} />
+                        <XAxis dataKey="month" />
+                        <YAxis />
+                        <Tooltip />
+                        {selectedCategories.map((entry, index) => <Line type="linear" dataKey={entry.value} stroke={colors[index]} />)}
+                    </LineChart>
+                </div>
 
-                </PieChart>
+                <div class="piechart">
+                    <PieChart width={700} height={600}>
+                        <Legend layout='vertical' verticalAlign='middle' align='right' />
+                        <Tooltip formatter={(value) => {
+                            const percent = (value/totalVids*100).toFixed(2)
+                            return `${value} (${percent}%)`}}
+                        />
+                        <Pie data={pieCats} isAnimationActive={false} label>
+                            {selectedCategories.map((entry, index) => <Cell fill={colors[index]} />)}
+                        </Pie>
+
+                    </PieChart>
+                </div>
             </div>
-
-    </div>
-
+        </div>
     );
 }
 

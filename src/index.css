@@ -12,28 +12,15 @@ code {
     monospace;
 }
 
-#about #education {
-  width: 33%;
-  margin: 0;
-  padding: 2%;
-  color: black;
-}
-
-#about-section #education {
-    padding: 2vw;
-    text-align: center;
-}
 
 .section {
-    padding: 2vw;
+    padding: 1vw;
     text-align: center;
 }
 
 .section-title {
     font-size: 44px;
     color: black;
-    margin: 10px 0;
-    padding: 10px 0;
 }
 
 .work {
@@ -49,7 +36,6 @@ code {
 .main {
   display: inline-block;
   vertical-align: top;
-  margin: 2vw;
   text-align: left;
   background-color: white;
   box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2);
@@ -57,7 +43,6 @@ code {
 
 .section .main {
   width: 33%;
-  margin: 0;
   padding: 1%;
   color: black;
 }
@@ -66,11 +51,15 @@ code {
     background-color: grey;
 }
 
-.dark {
-    background-color: black
+.sideByside {
+    display: inline-flex;
+    flex-direction: row;
 }
 
-.multi-select {
-    width: 50%;
-    --rmsc-radius: 4px; /* Radius */
+.piechart {
+    float: left
+}
+
+.linechart {
+    float: left
 }
